@@ -478,7 +478,7 @@ var ref=null, lastEmail='';
 async function save(data, isUpdate){
   var db=await getDb();
   if(db){ try{ if(isUpdate&&ref){ await ref.update(data); } else { ref=await db.collection('waitlist').add(data); } return 'db'; }catch(e){} }
-  if(FORM_ENDPOINT && FORM_ENDPOINT.indexOf('http')===0){ try{ var r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.assign({email:lastEmail},data))}); if(r.ok) return 'endpoint'; }catch(e){} }
+  if(FORM_ENDPOINT && FORM_ENDPOINT.indexOf('http')===0){ try{ var r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({email:lastEmail},data))}); if(r.ok) return 'endpoint'; }catch(e){} }
   try{ var k='ebi_waitlist_local', a=JSON.parse(localStorage.getItem(k)||'[]'); a.push(data); localStorage.setItem(k,JSON.stringify(a)); }catch(e){}
   return 'local';
 }
