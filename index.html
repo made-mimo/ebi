@@ -202,6 +202,7 @@ textarea.field{min-height:84px;resize:vertical}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:600;color:var(--ink-2);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--green-soft);border-color:var(--green-2);color:var(--ink)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .consent{font-size:12px;color:var(--ink-3);text-align:center}
 .msg{margin-top:14px;border-radius:14px;padding:14px 16px;font-size:14px}
 .msg.ok{background:var(--ok-soft);color:var(--ink)}
@@ -254,7 +255,7 @@ footer img{height:24px;width:auto}
       <span class="pill-live"><i></i>Founding Family Programme now open</span>
       <h1>Everyone calls him <em>Uncle.</em> Ebi knows why.</h1>
       <p class="lede">Ebi is a private space where relatives in the UK, Nigeria and beyond build one shared picture of the family: who everyone is, how they’re connected, and the stories that explain it.</p>
-      <form class="quick" id="quickForm" novalidate>
+      <form class="quick" id="quickForm" novalidate><div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <input id="qName" name="name" aria-label="Your name" placeholder="Your name" autocomplete="name" required>
         <input id="qEmail" name="email" aria-label="Email address" class="sep" type="email" placeholder="Email address" autocomplete="email" required>
         <button class="btn btn-p" type="submit">Join the waitlist</button>
@@ -351,7 +352,7 @@ footer img{height:24px;width:auto}
     <div class="formcard" id="formcard">
       <h2>Join the waitlist</h2>
       <p class="sub">Be first to hear when Ebi’s pilot opens.</p>
-      <form id="mainForm" novalidate>
+      <form id="mainForm" novalidate><div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="grid2">
           <div><label for="fName">Your name</label><input class="field" id="fName" name="name" autocomplete="name" required></div>
           <div><label for="fEmail">Email address</label><input class="field" id="fEmail" name="email" type="email" autocomplete="email" required></div>
@@ -483,8 +484,9 @@ async function save(data, isUpdate){
   return 'local';
 }
 function showMsg(kind,text){ var m=$('#msg'); m.className='msg '+kind; m.textContent=text; m.hidden=false; }
-async function join(name,email){
+async function join(name,email,trap){
   name=(name||'').trim(); email=(email||'').trim();
+  if(trap){ $('#mainForm').hidden=true; $('#step2').hidden=false; return; }
   if(!name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ $('#waitlist').scrollIntoView({behavior:RM?'auto':'smooth'}); $('#fName').value=name; $('#fEmail').value=email; showMsg('err','Please add your name and a valid email address so we can reach you.'); return; }
   var btn=$('#mainBtn'); btn.disabled=true; btn.textContent='Joining…'; lastEmail=email;
   var where=await save({name:name,email:email,source:'landing',createdAt:new Date().toISOString()});
@@ -495,8 +497,8 @@ async function join(name,email){
   $('#mainForm').hidden=true; $('#step2').hidden=false;
   $('#formcard').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
 }
-$('#quickForm').addEventListener('submit',function(e){ e.preventDefault(); join($('#qName').value,$('#qEmail').value); });
-$('#mainForm').addEventListener('submit',function(e){ e.preventDefault(); join($('#fName').value,$('#fEmail').value); });
+$('#quickForm').addEventListener('submit',function(e){ e.preventDefault(); join($('#qName').value,$('#qEmail').value,$('#quickForm .hp input').value); });
+$('#mainForm').addEventListener('submit',function(e){ e.preventDefault(); join($('#fName').value,$('#fEmail').value,$('#mainForm .hp input').value); });
 $('#s2Form').addEventListener('submit',async function(e){ e.preventDefault(); var b=$('#s2Btn'); b.disabled=true; b.textContent='Sending…';
   await save({countries:picked('countries'),heritage:picked('heritage'),relatives:picked('relatives')[0]||'',ownWords:$('#fRel').value.trim(),detailsAt:new Date().toISOString()},true);
   $('#step2').innerHTML='<h3>Thank you.</h3><p style="color:var(--ink-2)">That helps us build Ebi around real families. We’ll be in touch.</p>'; });
