@@ -1565,5 +1565,8 @@ setupReveal();
 })();
 
 </script>
+<script>/* visitor count: one cookieless image request, only on ebiapp.net; nothing is stored on the device */
+(function(){try{if(!/(^|\.)ebiapp\.net$/.test(location.hostname))return;var r='';try{r=new URL(document.referrer).hostname}catch(e){}
+new Image().src='/hit.gif?p='+(/walkthrough/.test(location.pathname)?'walkthrough':'home')+'&r='+encodeURIComponent(r)+'&t='+Date.now();}catch(e){}})();</script>
 </body>
 </html>
