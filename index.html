@@ -238,6 +238,9 @@ textarea.field{min-height:84px;resize:vertical}
 .faq summary::after{content:"+";font-family:var(--f-display);font-size:22px;line-height:1;color:var(--gold)}
 .faq details[open] summary::after{content:"−"}
 .faq details p{padding-bottom:16px;color:var(--ink-2);max-width:66ch}
+.faq details p + p{margin-top:-6px}
+.faq-more{margin-top:20px;color:var(--ink-2)}
+.faq-more a{color:var(--green);font-weight:600}
 
 footer{padding-block:26px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
@@ -354,7 +357,7 @@ apply(saved());
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Privacy and your questions</span>
       <h2 id="faqx-title">Your questions about Ebi, answered.</h2>
-      <p>Is it private? Who sees what? Can we leave? Watch the 60-second video, or flip through the slides at your own pace. The answers are the same, and there is a text version below.</p></div>
+      <p>Is it private? Who sees what? Can we leave? Watch the 60-second video, or flip through the slides at your own pace. Prefer to read? The <a href="#faq">written FAQ</a> has the same answers in full.</p></div>
     <div class="faqx-grid">
       <figure>
         <div class="faqx-phone"><video controls playsinline preload="none" poster="faq/poster.jpg" aria-label="Ebi privacy FAQ, 60-second video"><source src="faq/ebi-faq-privacy.mp4" type="video/mp4">Your browser can’t play this video. Read the answers in the text version below.</video></div>
@@ -370,8 +373,7 @@ apply(saved());
         <p class="faqx-count" aria-live="polite" hidden>Slide 1 of 8</p>
       </div>
     </div>
-    <details class="faqx-text"><summary>Read the same answers as text</summary><div class="faqx-qa"><div><h3>Is my family’s information private?</h3><p>Only the relatives you invite can see your family. It is invite only, not public and not searchable. No ads, and your data is never sold. The Ebi team doesn’t look at your family’s content unless you ask us to.</p></div><div><h3>Can I choose who sees what?</h3><p>Yes. You decide who sees each memory, photo and story. For example, Grandma’s jollof recipe can be shared with just Mum’s side of the family.</p></div><div><h3>What if someone adds something wrong about me?</h3><p>Nothing changes on your profile without your OK. A suggested change waits for your approval, and the history shows what changed and who approved it.</p></div><div><h3>Why not just use our WhatsApp group?</h3><p>WhatsApp is for talking. Ebi is for keeping. Group chats scroll away; Ebi keeps each memory on the right person. Keep your group chat and invite relatives to Ebi with a link.</p></div><div><h3>Can I leave and take our information?</h3><p>Yes. You can download or delete your data at any time. Deleting removes the memories, photos and recordings you added.</p></div><div><h3>Is it free?</h3><p>Free to start. Optional family plans later, for extra space and features.</p></div></div></details>
-    <div class="faqx-cta"><a class="btn btn-p" href="#waitlist">Join the waitlist</a><a class="btn btn-g" href="walkthrough.html">Try the interactive walkthrough</a></div>
+    <div class="faqx-cta"><a class="btn btn-p" href="#waitlist">Join the waitlist</a><a class="btn btn-g" href="walkthrough.html">Try the interactive walkthrough</a><a class="btn btn-g" href="#faq">Read the written FAQ</a></div>
   </div>
 </section>
 <section class="block deep">
@@ -436,14 +438,18 @@ apply(saved());
   <div class="wrap">
     <div class="sec-head rv"><span class="eyebrow">Questions</span><h2>Good questions, honest answers.</h2><p style="margin-top:10px"><a href="#questions">Prefer to watch? See the 60-second privacy FAQ video and slides.</a></p></div>
     <div class="faq">
-      <details><summary>Will Ebi be free?</summary><p>You’ll be able to start for free. Optional premium family plans will add more. Founding Families get a preferential rate, and we’ll confirm the terms before the pilot opens.</p></details>
-      <details><summary>Who can see my family’s information?</summary><p>Only the relatives you invite. Family Circles let you decide which relatives see what, so caregiving updates can stay with the carers while the big moments go to everyone.</p></details>
-      <details><summary>We already have a family tree on Ancestry or MyHeritage.</summary><p>Bring it with you. Ebi imports standard family-tree files (GEDCOM), then adds what those tools leave out: what your family calls each other, who raised whom, and the stories behind the names.</p></details>
-      <details><summary>What if relatives remember things differently?</summary><p>Ebi keeps both accounts and asks the right relatives to confirm. One person’s version never silently overwrites another’s.</p></details>
-      <details><summary>When can we start?</summary><p>We’re building the first version now. The pilot opens in stages, and Founding Families are invited first, in the order they join.</p></details>
-      <details><summary>Is Ebi only for certain cultures or countries?</summary><p>No. Ebi is built for diaspora families of every culture, in the UK, the US, Canada and anywhere else in the world. Every family describes its relationships in its own way, and Ebi keeps your family’s own words and titles. Our first cultural modules cover Yoruba, Igbo and Hausa kinship, and we’ll add more in the order our Founding Families ask for them. Tell us about your family when you join.</p></details>
-      <details><summary>Does it work on my phone?</summary><p>Yes. Ebi works on phones and computers, so Grandma can use the tablet and cousins abroad can use their phones.</p></details>
+      <details><summary>Is my family’s information private and secure?</summary><p>Yes. Your family space is private and invite-only. Only the relatives you invite can see it, and it’s never public or searchable.</p><p>We don’t run ads, and we never sell your data. Ẹbí’s team doesn’t browse your family’s content.</p></details>
+      <details><summary>Can I choose who sees what, within my family?</summary><p>Yes. Every memory, photo, voice note and event can be shared with the whole family, with one side of it, or just with the people you pick.</p></details>
+      <details><summary>How is Ẹbí different from our WhatsApp group?</summary><p>Group chats are great for talking, but photos, stories and “who’s who” soon get buried.</p><p>Ẹbí keeps them on the right person’s profile. It shows how everyone is related, in your family’s own words, and keeps elders' stories in their own voices.</p><p>You don’t have to give up your group chat. Keep it, and invite relatives to Ẹbí with a link.</p></details>
+      <details><summary>Is it free?</summary><p>Ẹbí is free to start. Optional family plans will add extra storage and features later. Founding Families will hear about plans first.</p></details>
+      <details><summary>What if a relative adds something wrong about me?</summary><p>Nothing changes on your profile without your OK. Changes to your profile wait for your approval, and every edit is kept along with who made it.</p><p>When something new is added to the family, another relative checks it before it counts. If relatives remember things differently, Ẹbí keeps both versions until the family decides.</p></details>
+      <details><summary>Can I leave and take our information with me?</summary><p>Yes, at any time. You can download everything you’ve contributed, or delete your account along with the memories, photos and recordings you added.</p></details>
+      <details><summary>Can I bring the family tree we already have?</summary><p>Yes. Export a GEDCOM file from Ancestry, MyHeritage, FamilySearch or most other family tree apps, and import it into Ẹbí.</p></details>
+      <details><summary>Who can see relatives who haven’t joined Ẹbí yet?</summary><p>Only your family. People you add who haven’t joined yet are visible only inside your family space.</p><p>When they join, they take control of their own profile.</p></details>
+      <details><summary>Is Ẹbí only for certain cultures or countries?</summary><p>No. Ẹbí is built for diaspora families of every culture, in the UK, the US, Canada and anywhere else in the world. Every family describes its relationships in its own way, and Ẹbí keeps your family’s own words and titles. Our first cultural modules cover Yoruba, Igbo and Hausa kinship, and we’ll add more in the order our Founding Families ask for them. Tell us about your family when you join.</p></details>
+      <details><summary>Does it work on my phone?</summary><p>Yes. Ẹbí works on phones and computers, so Grandma can use the tablet and cousins abroad can use their phones.</p></details>
     </div>
+    <p class="faq-more">Questions we haven’t answered here? Email <a href="mailto:hello@ebiapp.net">hello@ebiapp.net</a>.</p>
   </div>
 </section>
 
